@@ -26,8 +26,9 @@ class TemplateSettingCardForClick(QFrame):
         super().__init__(parent=parent)
         self.image_path = f'{BANNER_IMAGE_DIR}/{setting_name}.png'
         self.setting_name = setting_name
-        self.title = title
-        self.content = content
+        self.context = context
+        self.title = bt.tr(context, title) if context else title
+        self.content = bt.tr(context, content) if context else content
         self.sub_view = sub_view
         self.config = config
         self.card_display_type = configGui.cardDisplayType.value
