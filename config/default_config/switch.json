@@ -1,0 +1,81 @@
+
+[
+    {
+        "config": "cafeInvite",
+        "name": "咖啡厅",
+        "sort": 1,
+        "tip": "帮助你收集咖啡厅体力和信用点",
+        "type": "TextSettingCard"
+    },
+    {
+        "config": "schedulePriority",
+        "name": "日程",
+        "sort": 2,
+        "tip": "自动每日日程",
+        "type": "TextSettingCard"
+    },
+    {
+        "config": "shopPriority",
+        "name": "商店购买",
+        "sort": 6,
+        "tip": "商店里买东西",
+        "type": "CheckboxSettingCard"
+    },
+    {
+        "config": "arenaShopPriority",
+        "name": "竞技场商店购买",
+        "sort": 7,
+        "tip": "竞技场商店里买东西",
+        "type": "CheckboxSettingCard"
+    },
+    {
+        "config": "mainlinePriority",
+        "name": "主线清除体力",
+        "sort": 8,
+        "tip": "主线关卡自动清除体力与每日困难",
+        "type": "StageSettingCard"
+    },
+    {
+        "config": "arenaPriority",
+        "name": "竞技场",
+        "sort": 11,
+        "tip": "帮助你自动打竞技场",
+        "type": "ComboSettingCard"
+    },
+    {
+        "config": "createPriority",
+        "name": "自动制造",
+        "sort": 12,
+        "tip": "帮助你自动制造",
+        "type": "ComboSettingCard"
+    },
+    {
+        "config": "totalForceFightPriority",
+        "name": "总力战",
+        "sort": 13,
+        "tip": "总力战期间自动打总力战",
+        "type": "BasicSettingCard"
+    },
+    {
+        "config": "sweepCountConfig",
+        "name": "扫荡及购买券设置",
+        "sort": 14,
+        "tip": "各种扫荡及购买券次数设置",
+        "type": "BasicSettingCard"
+    },
+    {
+        "config": "friendWhiteList",
+        "name": "自动清好友白名单",
+        "sort": 15,
+        "tip": "设置在定期好友清理中需要保留的好友码",
+        "type": "BasicSettingCard"
+    },
+    {
+        "config": "drillConfig",
+        "name": "战术综合测试",
+        "sort": 16,
+        "tip": "帮助你自动打战术综合测试",
+        "type": "BasicSettingCard"
+    }
+]
+

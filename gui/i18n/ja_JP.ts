@@ -540,6 +540,61 @@
         <source>Steam国际服</source>
         <translation>Steam 版</translation>
     </message>
+    <message>
+        <location filename="../util/config_translation.py" line="141"/>
+        <source>设置成功</source>
+        <translation>設定成功</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="142"/>
+        <source>设置失败</source>
+        <translation>設定失敗</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="143"/>
+        <source>警告</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="144"/>
+        <source>设置可能会出现问题，当前值为：</source>
+        <translation>設定に問題が発生する可能性があります。現在の値：</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="145"/>
+        <source>当前值为：</source>
+        <translation>現在の値：</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="146"/>
+        <source>摸头轮数</source>
+        <translation>頭を撫でる回数</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="147"/>
+        <source>摸头轮数设置错误</source>
+        <translation>頭を撫でる回数の設定エラー</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="148"/>
+        <source>请设置为4-15之间的整数</source>
+        <translation>4から15の間の整数を設定してください</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="149"/>
+        <source>表单修改成功</source>
+        <translation>フォームの変更に成功</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="150"/>
+        <source>已经被设置为：</source>
+        <translation>に設定されました：</translation>
+    </message>
+    <message>
+        <location filename="../util/config_translation.py" line="151"/>
+        <source>请检查输入的数据是否正确</source>
+        <translation>入力データが正しいか確認してください</translation>
+    </message>
 </context>
 <context>
     <name>CreateErrorInfoMessageBox</name>

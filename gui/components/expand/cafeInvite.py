@@ -182,11 +182,11 @@ class Layout(QWidget):
     def __accept_pat_round(self, text):
         # str of 4 - 15
         if text not in (str(i) for i in range(4, 16)):
-            notification.error("摸头轮数设置错误", "请设置为4-15之间的整数", self.config)
+            notification.error(bt.tr('ConfigTranslation', "摸头轮数设置错误"), bt.tr('ConfigTranslation', "请设置为4-15之间的整数"), self.config)
         else:
             self.pat_round = int(text)
             self.config.set('cafe_reward_affection_pat_round', self.pat_round)
-            notification.success("摸头轮数设置成功", f"当前值为：{self.pat_round}", self.config)
+            notification.success(bt.tr('ConfigTranslation', "摸头轮数"), bt.tr('ConfigTranslation', "当前值为：") + str(self.pat_round), self.config)
 
     @staticmethod
     def check_valid_student_names(favor_student):

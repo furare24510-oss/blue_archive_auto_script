@@ -1,0 +1,13 @@
+{
+    "MainWindow": {
+        "cardDisplayType": "withImage",
+        "configLoadType": "Card",
+        "DpiScale": "Auto",
+        "Language": "ja_JP",
+        "MicaEnabled": true
+    },
+    "QFluentWidgets": {
+        "ThemeColor": "#ff0078d4",
+        "ThemeMode": "Light"
+    }
+}

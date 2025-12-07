@@ -276,7 +276,7 @@ class TemplateLayoutV2(QWidget):
                     else:
                         value = value
         except:
-            notification.error('设置失败', '请检查输入的数据是否正确', self.cs)
+            notification.error(self.tr('设置失败'), self.tr('请检查输入的数据是否正确'), self.cs)
             return
         self.config[key] = value
-        notification.success('表单修改成功', f'{cf.label}已经被设置为：{value}', self.cs)
+        notification.success(self.tr('表单修改成功'), f'{cf.label}{self.tr("已经被设置为：")}{value}', self.cs)
