@@ -125,7 +125,7 @@ class OutlineLabel(QLabel):
         super().__init__(text, parent)
         if args: self.init_args = args
         font_size = kwargs.get('font_size', 20)  # Retrieve font size from kwargs
-        font_family = kwargs.get('font_family', "Microsoft YaHei")  # Retrieve font family from kwargs
+        font_family = kwargs.get('font_family', "Yu Gothic, Segoe UI, Arial")  # Retrieve font family from kwargs
         font_weight = kwargs.get('font_weight', QFont.Bold)  # Retrieve font weight from kwargs
         self.outline_color = kwargs.get('outline_color', QColor("white"))  # Retrieve outline color from kwargs
         self.text_color = kwargs.get('text_color', QColor("black"))  # Retrieve text color from kwargs

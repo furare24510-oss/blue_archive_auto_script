@@ -59,20 +59,20 @@ class TemplateSettingCardForClick(QFrame):
             self.image_label.setAlignment(Qt.AlignTop)
             self.viewLayout.addWidget(self.image_label)
 
-        # 设置标题
+        # 設定タイトル
         self.title_label = OutlineLabel(self.title, parent=self,
                                         font_size=20,
-                                        font_family='Microsoft YaHei',
+                                        font_family='Yu Gothic, Segoe UI, Arial',
                                         font_weight=QFont.Bold)
 
         self.title_label.setAlignment(Qt.AlignCenter)
 
         # self.title_label.setContentsMargins(0, 0, 0, 0)
 
-        # 设置简介
+        # 説明
         self.content_label = OutlineLabel(self.content, parent=self,
                                           font_size=13,
-                                          font_family='Microsoft YaHei',
+                                          font_family='Yu Gothic, Segoe UI, Arial',
                                           font_weight=QFont.Normal)
 
         self.content_label.setAlignment(Qt.AlignCenter)
