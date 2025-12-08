@@ -1,10 +1,14 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QIntValidator, QFont
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QGridLayout
 from qfluentwidgets import LineEdit, PushButton
 
 from core.utils import delay
 from gui.util import notification
+from gui.util.translator import baasTranslator as bt
+
+# 日本語向けフォント設定（游ゴシック、メイリオ、Yu Gothicの順）
+JAPANESE_FONT = "游ゴシック, Meiryo, Yu Gothic, Segoe UI, Arial"
 
 
 class StateButton(PushButton):
@@ -48,28 +52,48 @@ class Layout(QWidget):
 
         self.config = config
         self.item_levels = ["primary", "normal", "advanced", "superior"]
+        
+        # 言語設定に応じて地域名称キーを決定
         ls_names = self.config.static_config.lesson_region_name
-        key = self.config.server_mode
-        if self.config.server_mode == 'Global':
-            key += "_en-us"
-        self.lesson_names = ls_names[key]
+        
+        # bt.stringLang は言語コード（例：ja_JP, en_US, zh_CN）
+        current_lang_code = bt.stringLang
+        
+        # 言語コードに対応するキーを選択
+        if current_lang_code == 'ja_JP':
+            region_key = "JP"
+        elif current_lang_code == 'en_US':
+            region_key = "Global_en-us"
+        elif current_lang_code == 'ko_KR':
+            region_key = "Global_ko-kr"
+        elif current_lang_code == 'zh_TW':
+            region_key = "Global_zh-tw"
+        else:  # デフォルトは中国語（CN）
+            region_key = "CN"
+        
+        self.lesson_names = ls_names[region_key]
         self.priority_list = self.config.get('lesson_times')
         self.needed_levels = self.config.get('lesson_each_region_object_priority')
         self.check_config_validation()
 
         self.vBoxLayout = QVBoxLayout(self)
         self.lesson_enableFavorStudent_check_box_description = QLabel(self.tr('优先做指定学生存在的日程'), self)
-        # 保留顶部的 CheckBox
+        self._set_label_font(self.lesson_enableFavorStudent_check_box_description)
+        # 保留顶部の CheckBox
         from qfluentwidgets import CheckBox
         self.lesson_enableFavorStudent_check_box = CheckBox('', self)
         self.lesson_enableFavorStudent_check_box.setChecked(self.config.get('lesson_enableInviteFavorStudent'))
 
         self.lesson_favorStudent_LineEdit_description = QLabel(self.tr('指定学生'), self)
+        self._set_label_font(self.lesson_favorStudent_LineEdit_description)
         self.lesson_favorStudent_LineEdit = LineEdit(self)
+        self._set_lineedit_font(self.lesson_favorStudent_LineEdit)
         self.lesson_favorStudent_LineEdit.setText('>'.join(self.config.get('lesson_favorStudent')))
         self.accept_favor_student = PushButton(self.tr('确定'), self)
+        self._set_button_font(self.accept_favor_student)
 
         self.relationship_check_box_description = QLabel(self.tr('优先做好感等级多的日程'), self)
+        self._set_label_font(self.relationship_check_box_description)
         self.relationship_check_box = CheckBox('', self)
         self.relationship_check_box.setChecked(self.config.get('lesson_relationship_first'))
 
@@ -103,6 +127,24 @@ class Layout(QWidget):
                 temp.append(self.item_levels)
             self.needed_levels = temp
             self.config.set('lesson_each_region_object_priority', self.needed_levels)
+
+    def _set_label_font(self, label: QLabel):
+        """ラベルに日本語フォントを設定"""
+        font = label.font()
+        font.setFamily(JAPANESE_FONT)
+        label.setFont(font)
+
+    def _set_lineedit_font(self, lineedit: LineEdit):
+        """LineEdit に日本語フォントを設定"""
+        font = lineedit.font()
+        font.setFamily(JAPANESE_FONT)
+        lineedit.setFont(font)
+
+    def _set_button_font(self, button: PushButton):
+        """ボタンに日本語フォントを設定"""
+        font = button.font()
+        font.setFamily(JAPANESE_FONT)
+        button.setFont(font)
 
     def Slot_for_accept_favor_student(self):
         res = self.lesson_favorStudent_LineEdit.text().split('>')
@@ -153,6 +195,7 @@ class Layout(QWidget):
         # 表头
         label_region = QLabel(self.tr("区域名称"), self)
         font = label_region.font()
+        font.setFamily(JAPANESE_FONT)
         font.setBold(True)
         label_region.setFont(font)
         self.tableLayout.addWidget(label_region, 0, 0, Qt.AlignLeft)
@@ -161,19 +204,23 @@ class Layout(QWidget):
         for i, n in enumerate(name):
             label = QLabel(n, self)
             f = label.font()
+            f.setFamily(JAPANESE_FONT)
             f.setBold(True)
             label.setFont(f)
             self.tableLayout.addWidget(label, 0, i + 1, Qt.AlignCenter)
 
         head_times = QLabel(self.tr("日程次数"), self)
         f2 = head_times.font()
+        f2.setFamily(JAPANESE_FONT)
         f2.setBold(True)
         head_times.setFont(f2)
         self.tableLayout.addWidget(head_times, 0, 5, Qt.AlignRight)
 
         # 每一行数据
         for row, region_name in enumerate(self.lesson_names, start=1):
-            self.tableLayout.addWidget(QLabel(region_name, self), row, 0, Qt.AlignLeft)
+            region_label = QLabel(region_name, self)
+            self._set_label_font(region_label)
+            self.tableLayout.addWidget(region_label, row, 0, Qt.AlignLeft)
 
             # 四个小按钮
             for col in range(4):
